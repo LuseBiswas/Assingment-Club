@@ -7,7 +7,7 @@ const Graph = ({ contests }) => {
   const [sortBy, setSortBy] = useState('name');
 
   const graphData = contests.map((contest) => ({
-    name: contest.name.substring(0, 20) + (contest.name.length > 20 ? '...' : ''),
+    name: contest.name.substring(0, 13) + (contest.name.length > 13 ? '...' : ''),
     duration: +(contest.durationSeconds / 3600).toFixed(2),
     type: contest.type
   })).sort((a, b) => 

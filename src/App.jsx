@@ -115,7 +115,7 @@ function App() {
           path="/"
           element={
             <Frame>
-              <Page title="Codeforces Contest Dashboard">
+              <Page title="Codeforces Contest Dashboard - Ritesh Biswas">
                 <LegacyCard sectioned>
                   <Filters
                     queryValue={search}
