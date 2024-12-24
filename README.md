@@ -15,8 +15,8 @@ Make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/codeforces-dashboard.git
-cd codeforces-dashboard
+git clone https://github.com/LuseBiswas/Assingment-Club.git
+cd Assingment-Club
 ```
 
 ### 2. Install Dependencies
@@ -27,15 +27,7 @@ Run the following command to install the project dependencies:
 npm install
 ```
 
-### 3. Configure Environment Variables
-
-Create a `.env` file in the root directory and add any necessary environment variables (if applicable). For example:
-
-```env
-REACT_APP_API_URL=https://api.codeforces.com
-```
-
-### 4. Start the Development Server
+### 3. Start the Development Server
 
 Run the following command to start the development server:
 
@@ -62,11 +54,9 @@ Here's an overview of the project's folder structure:
 ```
 ├── src
 │   ├── components     # Reusable React components
-│   ├── pages          # Page components
-│   ├── styles         # TailwindCSS configuration
-│   ├── utils          # Utility functions
 │   └── App.jsx        # Main app entry point
-├── public             # Public assets
+
+├── utils              # Utility functions
 ├── package.json       # Dependency configuration
 ├── vite.config.js     # Vite configuration
 └── README.md          # Project documentation
@@ -100,11 +90,3 @@ Here's an overview of the project's folder structure:
 ```bash
 npm run dev -- --port 4000
 ```
-
-## Contributing
-
-Feel free to submit issues or pull requests for improvements and new features. Contributions are always welcome!
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
