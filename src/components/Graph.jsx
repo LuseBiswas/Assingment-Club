@@ -58,7 +58,12 @@ const Graph = ({ contests }) => {
   };
 
   return (
-    <LegacyCard title="Contest Duration Analysis" sectioned>
+    <LegacyCard
+      title={
+        <span className="text-xl font-bold">Contest Duration Analysis</span>
+      }
+      sectioned
+    >
       <div className="mb-4 flex justify-between items-center">
         <ButtonGroup segmented>
           <Button

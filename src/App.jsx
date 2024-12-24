@@ -12,13 +12,12 @@ import {
   Badge,
   Button,
   Icon,
-  Text
-} from '@shopify/polaris';
-import { StarIcon } from '@shopify/polaris-icons';
+  Text,
+} from "@shopify/polaris";
+import { StarIcon } from "@shopify/polaris-icons";
 import { fetchContests } from "../utils/fetchContests";
 import Graph from "./components/Graph";
 import ContestDetails from "./components/ContestDetails";
-
 
 function App() {
   const [contests, setContests] = useState([]);
@@ -54,15 +53,17 @@ function App() {
   };
 
   // Filter and search logic
-  const filteredContests = contests.filter((contest) =>
-    filter === "FAVORITES"
-      ? favorites.includes(contest.id)
-      : filter
-      ? contest.type === filter
-      : true
-  ).filter((contest) =>
-    contest.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredContests = contests
+    .filter((contest) =>
+      filter === "FAVORITES"
+        ? favorites.includes(contest.id)
+        : filter
+        ? contest.type === filter
+        : true
+    )
+    .filter((contest) =>
+      contest.name.toLowerCase().includes(search.toLowerCase())
+    );
 
   // Pagination logic
   const totalPages = Math.ceil(filteredContests.length / itemsPerPage);
@@ -80,16 +81,16 @@ function App() {
   }
 
   const filterOptions = [
-    {label: 'All', value: ''},
-    {label: 'Codeforces', value: 'CF'},
-    {label: 'ICPC', value: 'ICPC'},
-    {label: 'Favorites', value: 'FAVORITES'}
+    { label: "All", value: "" },
+    { label: "Codeforces", value: "CF" },
+    { label: "ICPC", value: "ICPC" },
+    { label: "Favorites", value: "FAVORITES" },
   ];
 
   const itemsPerPageOptions = [
-    {label: '5 per page', value: '5'},
-    {label: '10 per page', value: '10'},
-    {label: '15 per page', value: '15'}
+    { label: "5 per page", value: "5" },
+    { label: "10 per page", value: "10" },
+    { label: "15 per page", value: "15" },
   ];
 
   const rows = paginatedContests.map((contest) => [
@@ -98,14 +99,21 @@ function App() {
         {contest.name}
       </Text>
     </Link>,
-    <Badge status={contest.type === 'CF' ? 'success' : 'info'}>{contest.type}</Badge>,
+    <Badge status={contest.type === "CF" ? "success" : "info"}>
+      {contest.type}
+    </Badge>,
     <Button
-      icon={<Icon source={StarIcon} color={favorites.includes(contest.id) ? "warning" : "subdued"} />}
+      icon={
+        <Icon
+          source={StarIcon}
+          color={favorites.includes(contest.id) ? "warning" : "subdued"}
+        />
+      }
       onClick={() => toggleFavorite(contest.id)}
       plain
       monochrome
       pressed={favorites.includes(contest.id)}
-    />
+    />,
   ]);
 
   return (
@@ -115,7 +123,7 @@ function App() {
           path="/"
           element={
             <Frame>
-              <Page title="Codeforces Contest Dashboard - Ritesh Biswas">
+              <Page title={<span className="text-2xl font-bold">Codeforces Contest Dashboard - Ritesh Biswas</span>}>
                 <LegacyCard sectioned>
                   <Filters
                     queryValue={search}
@@ -123,8 +131,8 @@ function App() {
                     onQueryChange={setSearch}
                     filters={[
                       {
-                        key: 'type',
-                        label: 'Contest Type',
+                        key: "type",
+                        label: "Contest Type",
                         filter: (
                           <Select
                             options={filterOptions}
@@ -132,7 +140,7 @@ function App() {
                             onChange={setFilter}
                           />
                         ),
-                      }
+                      },
                     ]}
                   />
                 </LegacyCard>
@@ -143,8 +151,12 @@ function App() {
 
                 <LegacyCard>
                   <DataTable
-                    columnContentTypes={['text', 'text', 'text']}
-                    headings={['Contest Name', 'Type', 'Favorite']}
+                    columnContentTypes={["text", "text", "text"]}
+                    headings={[
+                      <span className="font-bold text-lg">Contest Name</span>,
+                      <span className="font-bold text-lg">Type</span>,
+                      <span className="font-bold text-lg">Favorite</span>,
+                    ]}
                     rows={rows}
                   />
                   <LegacyCard.Section>
@@ -170,7 +182,10 @@ function App() {
             </Frame>
           }
         />
-        <Route path="/contest/:contestId" element={<ContestDetails contests={contests} />} />
+        <Route
+          path="/contest/:contestId"
+          element={<ContestDetails contests={contests} />}
+        />
       </Routes>
     </Router>
   );
